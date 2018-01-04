@@ -46,7 +46,7 @@ namespace OpenSage.Data
 
         public FileSystem CreateFileSystem()
         {
-            FileSystem nextFileSystem = null;
+            IFileSystem nextFileSystem = null;
             if (SecondaryPath != null)
             {
                 nextFileSystem = new FileSystem(SecondaryPath);

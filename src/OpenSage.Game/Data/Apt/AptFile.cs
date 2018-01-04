@@ -12,10 +12,10 @@ namespace OpenSage.Data.Apt
         public Movie Movie { get; private set; }
         internal bool IsEmpty = true;
         internal string MovieName;
-        internal FileSystem FileSystem;
+        internal IFileSystem FileSystem;
         internal ImageMap ImageMap;
 
-        private AptFile(ConstantData constants, FileSystem filesystem, string name)
+        private AptFile(ConstantData constants, IFileSystem filesystem, string name)
         {
             Constants = constants;
             FileSystem = filesystem;

@@ -17,7 +17,7 @@ namespace OpenSage.Content
 
         private readonly Dictionary<string, object> _cachedObjects;
 
-        private readonly FileSystem _fileSystem;
+        private readonly IFileSystem _fileSystem;
 
         public GraphicsDevice GraphicsDevice { get; }
 
@@ -25,14 +25,14 @@ namespace OpenSage.Content
 
         public EffectLibrary EffectLibrary { get; }
 
-        public FileSystem FileSystem => _fileSystem;
+        public IFileSystem FileSystem => _fileSystem;
 
         public IniDataContext IniDataContext { get; }
 
         public TranslationManager TranslationManager { get; }
 
         public ContentManager(
-            FileSystem fileSystem, 
+            IFileSystem fileSystem, 
             GraphicsDevice graphicsDevice,
             SageGame sageGame)
         {

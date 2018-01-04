@@ -8,7 +8,7 @@ namespace OpenSage.Data.Ini
 {
     public sealed class IniDataContext
     {
-        private readonly FileSystem _fileSystem;
+        private readonly IFileSystem _fileSystem;
 
         // TODO: Remove this once we can load all INI files upfront.
         private readonly List<string> _alreadyLoaded = new List<string>();
@@ -97,7 +97,7 @@ namespace OpenSage.Data.Ini
 
         internal Dictionary<string, IniToken> Defines { get; } = new Dictionary<string, IniToken>();
 
-        public IniDataContext(FileSystem fileSystem)
+        public IniDataContext(IFileSystem fileSystem)
         {
             _fileSystem = fileSystem;
         }

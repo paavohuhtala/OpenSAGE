@@ -13,7 +13,7 @@ namespace OpenSage.DataViewer.UI
         private readonly SearchBox _searchBox;
         private readonly ListBox _listBox;
 
-        private FileSystem _fileSystem;
+        private IFileSystem _fileSystem;
 
         public FilesList(MainForm mainForm)
         {

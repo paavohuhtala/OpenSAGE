@@ -5,18 +5,27 @@ using OpenSage.Data.Big;
 
 namespace OpenSage.Data
 {
-    public sealed class FileSystem : IDisposable
+    public interface IFileSystem : IDisposable
     {
-        private readonly FileSystem _nextFileSystem;
+        string RootDirectory { get; }
+        IEnumerable<FileSystemEntry> Files { get; }
+        FileSystemEntry GetFile(string filePath);
+        FileSystemEntry SearchFile(string fileName, params string[] searchFolders);
+        IEnumerable<FileSystemEntry> GetFiles(string folderPath);
+    }
+
+    public sealed class FileSystem : IFileSystem
+    {
+        private readonly IFileSystem _nextFileSystem;
 
         private readonly Dictionary<string, FileSystemEntry> _fileTable;
         private readonly List<BigArchive> _bigArchives;
 
         public string RootDirectory { get; }
 
-        public IReadOnlyCollection<FileSystemEntry> Files => _fileTable.Values;
+        public IEnumerable<FileSystemEntry> Files => _fileTable.Values;
 
-        public FileSystem(string rootDirectory, FileSystem nextFileSystem = null)
+        public FileSystem(string rootDirectory, IFileSystem nextFileSystem = null)
         {
             RootDirectory = rootDirectory;
 

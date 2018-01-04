@@ -16,7 +16,7 @@ namespace OpenSage.DataViewer.UI
         private readonly ButtonMenuItem _installationsMenuItem;
 
         private GameInstallation _installation;
-        private FileSystem _fileSystem;
+        private IFileSystem _fileSystem;
         private Game _game;
 
         public MainForm()

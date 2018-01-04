@@ -7,11 +7,11 @@ namespace OpenSage.Data
     {
         private readonly Func<Stream> _open;
 
-        public FileSystem FileSystem { get; }
+        public IFileSystem FileSystem { get; }
         public string FilePath { get; }
         public uint Length { get; }
 
-        public FileSystemEntry(FileSystem fileSystem, string filePath, uint length, Func<Stream> open)
+        public FileSystemEntry(IFileSystem fileSystem, string filePath, uint length, Func<Stream> open)
         {
             FileSystem = fileSystem;
             FilePath = filePath;
