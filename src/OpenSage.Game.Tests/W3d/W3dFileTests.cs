@@ -144,7 +144,7 @@ namespace OpenSage.Data.Tests.W3d
             {
                 var entry = bigArchive.GetEntry(@"Art\W3D\ABBarracks_AC.W3D");
 
-                var w3dFile = W3dFile.FromFileSystemEntry(new FileSystemEntry(null, entry.FullName, entry.Length, entry.Open));
+                var w3dFile = W3dFile.FromFileSystemEntry(new BigFileSystemEntry(null, entry.FullName, entry.Length, entry.Open));
                 Assert.Equal(3, w3dFile.Meshes.Count);
             }
         }

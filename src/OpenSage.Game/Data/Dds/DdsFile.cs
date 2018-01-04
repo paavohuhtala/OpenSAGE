@@ -36,7 +36,7 @@ namespace OpenSage.Data.Dds
             }
         }
 
-        public static bool IsDdsFile(FileSystemEntry entry)
+        public static bool IsDdsFile(IFileSystemEntry entry)
         {
             using (var stream = entry.Open())
             using (var reader = new BinaryReader(stream, Encoding.ASCII, true))
@@ -46,7 +46,7 @@ namespace OpenSage.Data.Dds
             }
         }
 
-        public static DdsFile FromFileSystemEntry(FileSystemEntry entry)
+        public static DdsFile FromFileSystemEntry(IFileSystemEntry entry)
         {
             using (var stream = entry.Open())
             using (var reader = new BinaryReader(stream, Encoding.ASCII, true))

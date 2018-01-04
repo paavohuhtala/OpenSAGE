@@ -18,7 +18,7 @@ namespace OpenSage.DataViewer.UI.Viewers
         private readonly ListBox _listBox;
         private W3dItem _selectedItem;
 
-        public W3dView(FileSystemEntry entry, Game game)
+        public W3dView(IFileSystemEntry entry, Game game)
         {
             var scene = new Scene();
 

@@ -60,7 +60,7 @@ namespace OpenSage.Data.Apt
             Mapping = new Dictionary<int, IImageAssignment>();
         }
 
-        public static ImageMap FromFileSystemEntry(FileSystemEntry entry)
+        public static ImageMap FromFileSystemEntry(IFileSystemEntry entry)
         {
             var map = new ImageMap();
 

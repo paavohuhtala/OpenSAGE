@@ -18,7 +18,7 @@ namespace OpenSage
 {
     public sealed class Game : DisposableBase
     {
-        private readonly FileSystem _fileSystem;
+        private readonly IFileSystem _fileSystem;
         private readonly GameTimer _gameTimer;
 
         private readonly Dictionary<string, HostCursor> _cachedCursors;
@@ -100,7 +100,7 @@ namespace OpenSage
 
         public SageGame SageGame { get; }
 
-        public Game(GraphicsDevice graphicsDevice, FileSystem fileSystem, SageGame sageGame)
+        public Game(GraphicsDevice graphicsDevice, IFileSystem fileSystem, SageGame sageGame)
         {
             GraphicsDevice = graphicsDevice;
             SageGame = sageGame;

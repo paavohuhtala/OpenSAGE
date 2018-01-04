@@ -6,7 +6,7 @@ namespace OpenSage.DataViewer.UI.Viewers
 {
     public sealed class TxtView : Scrollable
     {
-        public TxtView(FileSystemEntry entry)
+        public TxtView(IFileSystemEntry entry)
         {
             var textBox = new TextBox();
             

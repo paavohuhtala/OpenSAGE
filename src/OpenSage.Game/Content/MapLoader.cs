@@ -21,7 +21,7 @@ namespace OpenSage.Content
 {
     internal sealed class MapLoader : ContentLoader<Scene>
     {
-        protected override Scene LoadEntry(FileSystemEntry entry, ContentManager contentManager, LoadOptions loadOptions)
+        protected override Scene LoadEntry(IFileSystemEntry entry, ContentManager contentManager, LoadOptions loadOptions)
         {
             contentManager.IniDataContext.LoadIniFile(@"Data\INI\Terrain.ini");
 
@@ -560,7 +560,7 @@ namespace OpenSage.Content
 
             var numTextures = blendTileData.Textures.Length;
 
-            var textureInfo = new (int size, FileSystemEntry entry)[numTextures];
+            var textureInfo = new (int size, IFileSystemEntry entry)[numTextures];
             var largestTextureSize = int.MinValue;
 
             textureDetails = new TextureInfo[numTextures];

@@ -12,10 +12,10 @@ namespace OpenSage.Data.Apt
         public Movie Movie { get; private set; }
         internal bool IsEmpty = true;
         internal string MovieName;
-        internal FileSystem FileSystem;
+        internal IFileSystem FileSystem;
         internal ImageMap ImageMap;
 
-        private AptFile(ConstantData constants, FileSystem filesystem, string name)
+        private AptFile(ConstantData constants, IFileSystem filesystem, string name)
         {
             Constants = constants;
             FileSystem = filesystem;
@@ -76,7 +76,7 @@ namespace OpenSage.Data.Apt
             }
         }
 
-        public static AptFile FromFileSystemEntry(FileSystemEntry entry)
+        public static AptFile FromFileSystemEntry(IFileSystemEntry entry)
         {
             using (var stream = entry.Open())
             using (var reader = new BinaryReader(stream, Encoding.ASCII, true))

@@ -13,7 +13,7 @@ namespace OpenSage.DataViewer.UI.Viewers
         private readonly Game _game;
         private readonly HostCursor _cursor;
 
-        public AniView(FileSystemEntry entry, Game game)
+        public AniView(IFileSystemEntry entry, Game game)
         {
             _game = game;
 

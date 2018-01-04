@@ -17,7 +17,7 @@ namespace OpenSage.Content
 {
     internal sealed class ModelLoader : ContentLoader<Model>
     {
-        protected override Model LoadEntry(FileSystemEntry entry, ContentManager contentManager, LoadOptions loadOptions)
+        protected override Model LoadEntry(IFileSystemEntry entry, ContentManager contentManager, LoadOptions loadOptions)
         {
             var w3dFile = W3dFile.FromFileSystemEntry(entry);
 

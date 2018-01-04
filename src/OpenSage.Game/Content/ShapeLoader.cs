@@ -11,7 +11,7 @@ namespace OpenSage.Content
         {
         }
 
-        protected override ShapeComponent LoadEntry(FileSystemEntry entry, ContentManager contentManager, LoadOptions loadOptions)
+        protected override ShapeComponent LoadEntry(IFileSystemEntry entry, ContentManager contentManager, LoadOptions loadOptions)
         {
             //load the corresponding .dat file
             var movieName = entry.FilePath.Split('/')[0].Split('_')[0];

@@ -21,7 +21,7 @@ namespace OpenSage.Data.Bik
             _reader = reader;
         }
 
-        public static BinkFile FromFileSystemEntry(FileSystemEntry entry)
+        public static BinkFile FromFileSystemEntry(IFileSystemEntry entry)
         {
             var stream = entry.Open();
             var reader = new BinaryReader(stream, Encoding.ASCII, false);

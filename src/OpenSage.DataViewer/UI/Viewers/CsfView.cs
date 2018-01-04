@@ -8,9 +8,9 @@ namespace OpenSage.DataViewer.UI.Viewers
 {
     public sealed class CsfView : GridView
     {
-        private readonly FileSystemEntry _entry;
+        private readonly IFileSystemEntry _entry;
 
-        public CsfView(FileSystemEntry entry)
+        public CsfView(IFileSystemEntry entry)
         {
             _entry = entry;
 

@@ -8,7 +8,7 @@ namespace OpenSage.DataViewer.UI.Viewers
 {
     public sealed class WndView : Splitter
     {
-        public WndView(FileSystemEntry entry, Game game)
+        public WndView(IFileSystemEntry entry, Game game)
         {
             var wndComponent = new WndComponent
             {

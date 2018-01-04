@@ -30,7 +30,7 @@ namespace OpenSage.Content
             contentManager.IniDataContext.LoadIniFiles(@"Data\INI\MappedImages\TextureSize_512\");
         }
 
-        protected override GuiWindow LoadEntry(FileSystemEntry entry, ContentManager contentManager, LoadOptions loadOptions)
+        protected override GuiWindow LoadEntry(IFileSystemEntry entry, ContentManager contentManager, LoadOptions loadOptions)
         {
             var wndFile = WndFile.FromFileSystemEntry(entry);
 

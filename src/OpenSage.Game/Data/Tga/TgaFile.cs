@@ -9,7 +9,7 @@ namespace OpenSage.Data.Tga
         public TgaHeader Header { get; private set; }
         public byte[] Data { get; private set; }
 
-        public static TgaFile FromFileSystemEntry(FileSystemEntry entry)
+        public static TgaFile FromFileSystemEntry(IFileSystemEntry entry)
         {
             using (var stream = entry.Open())
             using (var reader = new BinaryReader(stream, Encoding.ASCII, true))
@@ -122,7 +122,7 @@ namespace OpenSage.Data.Tga
             RunLengthEncodedPacket = 1
         }
 
-        public static int GetSquareTextureSize(FileSystemEntry entry)
+        public static int GetSquareTextureSize(IFileSystemEntry entry)
         {
             using (var stream = entry.Open())
             using (var reader = new BinaryReader(stream, Encoding.ASCII, true))

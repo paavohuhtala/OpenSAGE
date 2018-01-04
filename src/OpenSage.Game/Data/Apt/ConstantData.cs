@@ -14,7 +14,7 @@ namespace OpenSage.Data.Apt
             Entries = new List<ConstantEntry>();
         }
 
-        public static ConstantData FromFileSystemEntry(FileSystemEntry entry)
+        public static ConstantData FromFileSystemEntry(IFileSystemEntry entry)
         {
             using (var stream = entry.Open())
             using (var reader = new BinaryReader(stream))

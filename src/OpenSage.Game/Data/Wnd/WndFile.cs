@@ -13,7 +13,7 @@ namespace OpenSage.Data.Wnd
         public WndLayoutBlock LayoutBlock { get; internal set; }
         public WndWindow RootWindow { get; internal set; }
 
-        public static WndFile FromFileSystemEntry(FileSystemEntry entry)
+        public static WndFile FromFileSystemEntry(IFileSystemEntry entry)
         {
             using (var stream = entry.Open())
             using (var reader = new StreamReader(stream, Encoding.ASCII))

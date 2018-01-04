@@ -120,7 +120,7 @@ namespace OpenSage.Data.Ini.Parser
 
         public IniTokenPosition CurrentPosition => _tokenReader.CurrentPosition;
 
-        public IniParser(string source, FileSystemEntry entry, IniDataContext dataContext)
+        public IniParser(string source, IFileSystemEntry entry, IniDataContext dataContext)
         {
             _directory = Path.GetDirectoryName(entry.FilePath);
             _dataContext = dataContext;

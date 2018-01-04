@@ -22,7 +22,7 @@ namespace OpenSage.Data.W3d
 
         public IReadOnlyList<W3dEmitter> Emitters { get; private set; }
 
-        public static W3dFile FromFileSystemEntry(FileSystemEntry entry)
+        public static W3dFile FromFileSystemEntry(IFileSystemEntry entry)
         {
             using (var stream = entry.Open())
             using (var reader = new BinaryReader(stream, Encoding.ASCII, true))

@@ -11,7 +11,7 @@ namespace OpenSage.DataViewer.UI.Viewers
     {
         private readonly ListBox _listBox;
 
-        public IniView(FileSystemEntry entry, Game game)
+        public IniView(IFileSystemEntry entry, Game game)
         {
             var iniDataContext = new IniDataContext(entry.FileSystem);
             iniDataContext.LoadIniFile(entry);

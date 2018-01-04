@@ -4,7 +4,7 @@ using OpenSage.Data;
 
 namespace OpenSage.Content
 {
-    internal abstract class ContentLoader : GraphicsObject
+    public abstract class ContentLoader : GraphicsObject
     {
         public virtual object PlaceholderValue => null;
 
@@ -13,6 +13,6 @@ namespace OpenSage.Content
             yield return filePath;
         }
 
-        public abstract object Load(FileSystemEntry entry, ContentManager contentManager, LoadOptions loadOptions);
+        public abstract object Load(IFileSystemEntry entry, ContentManager contentManager, LoadOptions loadOptions);
     }
 }

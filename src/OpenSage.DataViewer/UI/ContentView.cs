@@ -17,7 +17,7 @@ namespace OpenSage.DataViewer.UI
             _getGame = getGame;
         }
 
-        public void SetContent(FileSystemEntry entry)
+        public void SetContent(IFileSystemEntry entry)
         {
             if (Content != null)
             {
@@ -32,7 +32,7 @@ namespace OpenSage.DataViewer.UI
             }
         }
 
-        private Control CreateControl(FileSystemEntry entry)
+        private Control CreateControl(IFileSystemEntry entry)
         {
             switch (Path.GetExtension(entry.FilePath).ToLower())
             {

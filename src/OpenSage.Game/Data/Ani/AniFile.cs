@@ -22,7 +22,7 @@ namespace OpenSage.Data.Ani
 
         public AniCursorImage[] Images { get; private set; }
 
-        public static AniFile FromFileSystemEntry(FileSystemEntry entry)
+        public static AniFile FromFileSystemEntry(IFileSystemEntry entry)
         {
             RiffChunk rootChunk;
             using (var stream = entry.Open())

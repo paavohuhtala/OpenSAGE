@@ -5,24 +5,35 @@ using OpenSage.Data.Big;
 
 namespace OpenSage.Data
 {
-    public sealed class FileSystem : IDisposable
+    public interface IFileSystem : IDisposable
     {
-        private readonly FileSystem _nextFileSystem;
+        string RootDirectory { get; }
+        IReadOnlyCollection<IFileSystemEntry> Files { get; }
+        IFileSystemEntry GetFile(string filePath);
+        IFileSystemEntry SearchFile(string fileName, params string[] searchFolders);
+        IEnumerable<IFileSystemEntry> GetFiles(string folderPath);
 
-        private readonly Dictionary<string, FileSystemEntry> _fileTable;
+        IFileSystem NextFileSystem { get; }
+    }
+
+    public sealed class BigFileSystem : IFileSystem
+    {
+        private readonly Dictionary<string, BigFileSystemEntry> _fileTable;
         private readonly List<BigArchive> _bigArchives;
 
         public string RootDirectory { get; }
 
-        public IReadOnlyCollection<FileSystemEntry> Files => _fileTable.Values;
+        public IFileSystem NextFileSystem { get; }
 
-        public FileSystem(string rootDirectory, FileSystem nextFileSystem = null)
+        public IReadOnlyCollection<IFileSystemEntry> Files => _fileTable.Values;
+
+        public BigFileSystem(string rootDirectory, IFileSystem nextFileSystem = null)
         {
             RootDirectory = rootDirectory;
 
-            _nextFileSystem = nextFileSystem;
+            NextFileSystem = nextFileSystem;
 
-            _fileTable = new Dictionary<string, FileSystemEntry>(StringComparer.OrdinalIgnoreCase);
+            _fileTable = new Dictionary<string, BigFileSystemEntry>(StringComparer.OrdinalIgnoreCase);
             _bigArchives = new List<BigArchive>();
 
             // TODO: Figure out if there's a specific order that .big files should be loaded in,
@@ -41,7 +52,7 @@ namespace OpenSage.Data
 
                     foreach (var entry in archive.Entries)
                     {
-                        _fileTable[entry.FullName] = new FileSystemEntry(this, entry.FullName, entry.Length, entry.Open);
+                        _fileTable[entry.FullName] = new BigFileSystemEntry(this, entry.FullName, entry.Length, entry.Open);
                     }
                 }
                 else
@@ -51,22 +62,22 @@ namespace OpenSage.Data
                     {
                         relativePath = relativePath.Substring(1);
                     }
-                    _fileTable[relativePath] = new FileSystemEntry(this, relativePath, (uint) new FileInfo(file).Length, () => File.OpenRead(file));
+                    _fileTable[relativePath] = new BigFileSystemEntry(this, relativePath, (uint) new FileInfo(file).Length, () => File.OpenRead(file));
                 }
             }
         }
 
-        public FileSystemEntry GetFile(string filePath)
+        public IFileSystemEntry GetFile(string filePath)
         {
             if (_fileTable.TryGetValue(filePath, out var file))
             {
                 return file;
             }
 
-            return _nextFileSystem?.GetFile(filePath);
+            return NextFileSystem?.GetFile(filePath);
         }
 
-        public FileSystemEntry SearchFile(string fileName, params string[] searchFolders)
+        public IFileSystemEntry SearchFile(string fileName, params string[] searchFolders)
         {
             foreach (var searchFolder in searchFolders)
             {
@@ -76,10 +87,10 @@ namespace OpenSage.Data
                 }
             }
 
-            return _nextFileSystem?.SearchFile(fileName, searchFolders);
+            return NextFileSystem?.SearchFile(fileName, searchFolders);
         }
 
-        public IEnumerable<FileSystemEntry> GetFiles(string folderPath)
+        public IEnumerable<IFileSystemEntry> GetFiles(string folderPath)
         {
             foreach (var entry in _fileTable.Values)
             {
@@ -89,9 +100,9 @@ namespace OpenSage.Data
                 }
             }
 
-            if (_nextFileSystem != null)
+            if (NextFileSystem != null)
             {
-                foreach (var entry in _nextFileSystem.GetFiles(folderPath))
+                foreach (var entry in NextFileSystem.GetFiles(folderPath))
                 {
                     yield return entry;
                 }

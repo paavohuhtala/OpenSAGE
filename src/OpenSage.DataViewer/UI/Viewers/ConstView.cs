@@ -8,9 +8,9 @@ namespace OpenSage.DataViewer.UI.Viewers
 {
     public sealed class ConstView : GridView
     {
-        private readonly FileSystemEntry _entry;
+        private readonly IFileSystemEntry _entry;
 
-        public ConstView(FileSystemEntry entry)
+        public ConstView(IFileSystemEntry entry)
         {
             _entry = entry;
 

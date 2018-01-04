@@ -13,7 +13,7 @@ namespace OpenSage.DataViewer.UI
         private readonly SearchBox _searchBox;
         private readonly ListBox _listBox;
 
-        private FileSystem _fileSystem;
+        private IFileSystem _fileSystem;
 
         public FilesList(MainForm mainForm)
         {
@@ -23,7 +23,7 @@ namespace OpenSage.DataViewer.UI
             Rows.Add(_searchBox);
 
             _listBox = new ListBox();
-            _listBox.ItemTextBinding = Binding.Property((FileSystemEntry e) => e.FilePath);
+            _listBox.ItemTextBinding = Binding.Property((IFileSystemEntry e) => e.FilePath);
             _listBox.SelectedValueChanged += OnSelectedValueChanged;
             Rows.Add(_listBox);
 
@@ -45,7 +45,7 @@ namespace OpenSage.DataViewer.UI
 
         private void OnSelectedValueChanged(object sender, EventArgs e)
         {
-            SelectedFileChanged?.Invoke(this, new FileSystemEntryEventArgs((FileSystemEntry) _listBox.SelectedValue));
+            SelectedFileChanged?.Invoke(this, new FileSystemEntryEventArgs((IFileSystemEntry) _listBox.SelectedValue));
         }
 
         protected override void Dispose(bool disposing)

@@ -16,7 +16,7 @@ namespace OpenSage.Data.Tests
 
         public static string GetInstallationDirectory(SageGame game) => Locator.FindInstallations(game).First().Path;
 
-        public static void ReadFiles(string fileExtension, ITestOutputHelper output, Action<FileSystemEntry> processFileCallback)
+        public static void ReadFiles(string fileExtension, ITestOutputHelper output, Action<IFileSystemEntry> processFileCallback)
         {
             var rootDirectories = SageGames.GetAll()
                 .SelectMany(Locator.FindInstallations)
@@ -25,7 +25,7 @@ namespace OpenSage.Data.Tests
             var foundAtLeastOneFile = false;
             foreach (var rootDirectory in rootDirectories.Where(x => Directory.Exists(x)))
             {
-                var fileSystem = new FileSystem(rootDirectory);
+                var fileSystem = new BigFileSystem(rootDirectory);
 
                 foreach (var file in fileSystem.Files)
                 {

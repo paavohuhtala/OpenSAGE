@@ -35,7 +35,7 @@ namespace OpenSage.Data.Apt
             Entries = new List<IGeometryEntry>();
         }
 
-        public static Geometry FromFileSystemEntry(FileSystemEntry entry)
+        public static Geometry FromFileSystemEntry(IFileSystemEntry entry)
         {
             var geometry = new Geometry();
 

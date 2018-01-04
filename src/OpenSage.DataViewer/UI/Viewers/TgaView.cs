@@ -8,7 +8,7 @@ namespace OpenSage.DataViewer.UI.Viewers
 {
     public sealed class TgaView : ImageView
     {
-        public TgaView(FileSystemEntry entry)
+        public TgaView(IFileSystemEntry entry)
         {
             var tgaFile = TgaFile.FromFileSystemEntry(entry);
 

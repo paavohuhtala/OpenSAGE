@@ -9,7 +9,7 @@ namespace OpenSage.DataViewer.UI.Viewers
 {
     public sealed class MapView : Splitter
     {
-        public MapView(FileSystemEntry entry, Game game)
+        public MapView(IFileSystemEntry entry, Game game)
         {
             game.Scene = game.ContentManager.Load<Scene>(entry.FilePath);
 

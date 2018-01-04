@@ -8,7 +8,7 @@ namespace OpenSage.Content
     {
         private readonly CsfFile _csfFile;
 
-        public TranslationManager(FileSystem fileSystem)
+        public TranslationManager(IFileSystem fileSystem)
         {
             var csfEntry = fileSystem.GetFile(@"Data\English\generals.csf");
             if (csfEntry != null)

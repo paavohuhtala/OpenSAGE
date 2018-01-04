@@ -6,9 +6,9 @@ namespace OpenSage.DataViewer.Framework
     public sealed class InstallationChangedEventArgs : EventArgs
     {
         public GameInstallation Installation { get; }
-        public FileSystem FileSystem { get; }
+        public IFileSystem FileSystem { get; }
 
-        public InstallationChangedEventArgs(GameInstallation installation, FileSystem fileSystem)
+        public InstallationChangedEventArgs(GameInstallation installation, IFileSystem fileSystem)
         {
             Installation = installation;
             FileSystem = fileSystem;

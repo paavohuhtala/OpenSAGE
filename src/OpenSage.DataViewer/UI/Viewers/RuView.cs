@@ -8,7 +8,7 @@ namespace OpenSage.DataViewer.UI.Viewers
 {
     public sealed class RuView : GameControl
     {
-        public RuView(FileSystemEntry entry, Game game)
+        public RuView(IFileSystemEntry entry, Game game)
         {
             var scene = new Scene();
             var entity = new Entity();

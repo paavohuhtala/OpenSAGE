@@ -38,7 +38,7 @@ namespace OpenSage.Game.Tests.Apt
             {
                 var entry = bigArchive.GetEntry(@"MainMenu.const");
 
-                var data = ConstantData.FromFileSystemEntry(new FileSystemEntry(null, entry.FullName, entry.Length, entry.Open));
+                var data = ConstantData.FromFileSystemEntry(new BigFileSystemEntry(null, entry.FullName, entry.Length, entry.Open));
                 Assert.NotNull(data);
 
                 //requires unmodified main menu

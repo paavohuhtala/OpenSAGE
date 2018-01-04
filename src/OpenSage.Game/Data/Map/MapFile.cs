@@ -136,7 +136,7 @@ namespace OpenSage.Data.Map
             }
         }
 
-        public static MapFile FromFileSystemEntry(FileSystemEntry entry)
+        public static MapFile FromFileSystemEntry(IFileSystemEntry entry)
         {
             using (var stream = entry.Open())
             {

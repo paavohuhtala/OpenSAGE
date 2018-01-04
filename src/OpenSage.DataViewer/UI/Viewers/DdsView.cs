@@ -16,7 +16,7 @@ namespace OpenSage.DataViewer.UI.Viewers
         private readonly DdsFile _ddsFile;
         private readonly ListBox _listBox;
 
-        public DdsView(FileSystemEntry entry)
+        public DdsView(IFileSystemEntry entry)
         {
             _ddsFile = DdsFile.FromFileSystemEntry(entry);
 

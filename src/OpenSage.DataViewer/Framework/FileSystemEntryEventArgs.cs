@@ -5,9 +5,9 @@ namespace OpenSage.DataViewer.Framework
 {
     public sealed class FileSystemEntryEventArgs : EventArgs
     {
-        public FileSystemEntry Entry { get; }
+        public IFileSystemEntry Entry { get; }
 
-        public FileSystemEntryEventArgs(FileSystemEntry entry)
+        public FileSystemEntryEventArgs(IFileSystemEntry entry)
         {
             Entry = entry;
         }

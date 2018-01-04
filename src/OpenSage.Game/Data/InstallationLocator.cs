@@ -44,15 +44,15 @@ namespace OpenSage.Data
             SecondaryPath = secondaryPath;
         }
 
-        public FileSystem CreateFileSystem()
+        public BigFileSystem CreateFileSystem()
         {
-            FileSystem nextFileSystem = null;
+            IFileSystem nextFileSystem = null;
             if (SecondaryPath != null)
             {
-                nextFileSystem = new FileSystem(SecondaryPath);
+                nextFileSystem = new BigFileSystem(SecondaryPath);
             }
 
-            return new FileSystem(Path, nextFileSystem);
+            return new BigFileSystem(Path, nextFileSystem);
         }
     }
 

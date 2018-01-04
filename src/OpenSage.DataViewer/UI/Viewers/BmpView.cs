@@ -6,7 +6,7 @@ namespace OpenSage.DataViewer.UI.Viewers
 {
     public sealed class BmpView : ImageView
     {
-        public BmpView(FileSystemEntry entry)
+        public BmpView(IFileSystemEntry entry)
         {
             using (var stream = entry.Open())
             {
