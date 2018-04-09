@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using OpenSage.Gui.Wnd.Images;
 using OpenSage.Mathematics;
@@ -178,6 +179,8 @@ namespace OpenSage.Gui.Wnd.Controls
         public bool IsMouseOver { get; private set; }
         public bool IsMouseDown { get; private set; }
 
+        public bool IgnoreInput { get; set; }
+
         public Control()
         {
             Controls = new ControlCollection(this);
@@ -234,7 +237,7 @@ namespace OpenSage.Gui.Wnd.Controls
             return this;
         }
 
-        public Control[] GetSelfOrDescendantsAtPoint(in Point2D windowPoint)
+        public Control[] GetSelfOrDescendantsAtPoint(in Point2D windowPoint, Predicate<Control> predicate = null)
         {
             var localWindowPoint = windowPoint;
 
@@ -252,7 +255,10 @@ namespace OpenSage.Gui.Wnd.Controls
                     findRecursive(child);
                 }
 
-                result.Add(control);
+                if (predicate != null && predicate(control))
+                {
+                    result.Add(control);
+                }
             }
 
             findRecursive(this);

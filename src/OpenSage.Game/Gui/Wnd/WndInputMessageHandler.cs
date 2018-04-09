@@ -27,7 +27,10 @@ namespace OpenSage.Gui.Wnd
             {
                 case InputMessageType.MouseMove:
                     {
-                        var mouseOverControls = _windowManager.GetControlsAtPoint(message.Value.MousePosition).ToList();
+                        var mouseOverControls = _windowManager
+                            .GetControlsAtPoint(message.Value.MousePosition, control => !control.IgnoreInput)
+                            .ToList();
+
                         foreach (var control in _lastMouseOverControls)
                         {
                             if (!mouseOverControls.Contains(control))
@@ -68,7 +71,7 @@ namespace OpenSage.Gui.Wnd
                 case InputMessageType.MouseLeftButtonDown:
                     {
                         var element = _windowManager.GetControlAtPoint(message.Value.MousePosition);
-                        if (element != null)
+                        if (element != null && !element.IgnoreInput)
                         {
                             var mousePosition = element.PointToClient(message.Value.MousePosition);
                             element.InputCallback.Invoke(
@@ -83,7 +86,7 @@ namespace OpenSage.Gui.Wnd
                 case InputMessageType.MouseLeftButtonUp:
                     {
                         var element = _windowManager.GetControlAtPoint(message.Value.MousePosition);
-                        if (element != null)
+                        if (element != null && !element.IgnoreInput)
                         {
                             var mousePosition = element.PointToClient(message.Value.MousePosition);
                             element.InputCallback.Invoke(

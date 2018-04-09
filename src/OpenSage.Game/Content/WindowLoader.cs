@@ -234,6 +234,11 @@ namespace OpenSage.Content
                 result.BorderColor = ColorRgbaF.Transparent;
             }
 
+            if (wndWindow.Status.HasFlag(WndWindowStatusFlags.NoInput))
+            {
+                result.IgnoreInput = true;
+            }
+
             if (wndWindow.HasHeaderTemplate)
             {
                 var headerTemplate = contentManager.IniDataContext.HeaderTemplates.First(x => x.Name == wndWindow.HeaderTemplate);
