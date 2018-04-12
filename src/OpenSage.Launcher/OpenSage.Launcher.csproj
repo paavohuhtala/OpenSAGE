@@ -13,6 +13,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="1.0.0-alpha-26412-01" />
     <PackageReference Include="System.CommandLine" Version="0.1.0-preview2-180220-2" />
   </ItemGroup>
 
